@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mywhatsapp/pages/showed_page.dart';
-import 'package:mywhatsapp/screen/home_screen.dart';
+import 'package:mywhatsapp/view/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: title,
         theme: ThemeData.dark().copyWith(
-            appBarTheme: AppBarTheme(backgroundColor: Colors.transparent)),
+            appBarTheme:
+                const AppBarTheme(backgroundColor: Colors.transparent)),
         home: const Homescreen(),
       );
 }

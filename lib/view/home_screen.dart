@@ -1,10 +1,7 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:mywhatsapp/view/chats_page.dart';
 
-import '../model/chat_model.dart';
-import '../pages/camera_page.dart';
-import '../pages/chat_page.dart';
+import 'camera_page.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -90,10 +87,11 @@ class _HomescreenState extends State<Homescreen>
         controller: _controller,
         children: const [
           CameraPage(),
-          // ChatPage(
+          ChatsPage(),
           //     // chatmodels: widget.chatmodels,
           //     // sourchat: widget.sourchat,
           //     ),
+          // Text('Chats'),
           Text("STATUS"),
           Text("Calls"),
         ],
