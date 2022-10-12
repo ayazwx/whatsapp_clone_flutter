@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ChatsPage extends StatefulWidget {
-  const ChatsPage({Key? key}) : super(key: key);
+class CallsPage extends StatefulWidget {
+  const CallsPage({Key? key}) : super(key: key);
 
   @override
-  State<ChatsPage> createState() => _ChatsPageState();
+  State<CallsPage> createState() => _CallsPageState();
 }
 
-class _ChatsPageState extends State<ChatsPage> {
-  // late List<String> Chatshistory;
+class _CallsPageState extends State<CallsPage> {
+  // late List<String> Calls;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,8 @@ class _ChatsPageState extends State<ChatsPage> {
                   const Spacer(
                     flex: 30,
                   ),
-                  const Expanded(flex: 40, child: Text('Hello')),
+                  const Expanded(flex: 20, child: Icon(Icons.call)),
+                  const Expanded(flex: 10, child: Icon(Icons.videocam)),
                   // const Divider(),
                 ],
               ),
@@ -43,7 +44,7 @@ class _ChatsPageState extends State<ChatsPage> {
                 onPressed: () {},
                 backgroundColor: Colors.green,
                 child: const Icon(
-                  Icons.chat,
+                  Icons.call,
                   size: 20,
                 ),
               ),

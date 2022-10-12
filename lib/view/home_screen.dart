@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mywhatsapp/view/calls_page.dart';
 import 'package:mywhatsapp/view/chats_page.dart';
+import 'package:mywhatsapp/view/status_page.dart';
 
 import 'camera_page.dart';
 
@@ -30,7 +32,7 @@ class _HomescreenState extends State<Homescreen>
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () => {},
             iconSize: 18,
           ),
           PopupMenuButton<String>(
@@ -92,23 +94,10 @@ class _HomescreenState extends State<Homescreen>
           //     // sourchat: widget.sourchat,
           //     ),
           // Text('Chats'),
-          Text("STATUS"),
-          Text("Calls"),
+          StatusPage(),
+          CallsPage()
         ],
       ),
-      floatingActionButton: SizedBox(
-          height: 40.0,
-          width: 40.0,
-          child: FittedBox(
-            child: FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: Colors.green,
-              child: const Icon(
-                Icons.chat,
-                size: 20,
-              ),
-            ),
-          )),
     );
   }
 }
