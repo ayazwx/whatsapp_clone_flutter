@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mywhatsapp/view/select_contact.dart';
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _ChatsPageState extends State<ChatsPage> {
                   Expanded(
                     flex: 10,
                     child: Image.network(
-                        'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png'),
+                        'https://avatars.githubusercontent.com/u/92828194?v=4'),
                   ),
                   const Spacer(
                     flex: 30,
@@ -40,7 +41,12 @@ class _ChatsPageState extends State<ChatsPage> {
             width: 50.0,
             child: FittedBox(
               child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => const SelectContactPage()));
+                },
                 backgroundColor: Colors.green,
                 child: const Icon(
                   Icons.chat,
