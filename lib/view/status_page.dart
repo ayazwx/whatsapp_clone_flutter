@@ -19,36 +19,40 @@ class _StatusPageState extends State<StatusPage> {
               height: 70,
               child: Row(
                 children: [
-                  Expanded(
-                    flex: 10,
-                    child: Stack(children: <Widget>[
-                      SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Image.network(
-                            'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png'),
-                      ),
-                      Column(children: [
-                        const Padding(padding: EdgeInsets.all(15)),
-                        FloatingActionButton(
-                          mini: true,
-                          onPressed: () {},
-                          backgroundColor: Colors.green,
-                          child: const Icon(
-                            Icons.add,
-                            size: 20,
+                  Stack(children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(left: 1),
+                      width: 50,
+                      height: 50,
+                      child: Image.network(
+                          'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png'),
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(left: 30, top: 30),
+                        height: 20.0,
+                        width: 20.0,
+                        child: FittedBox(
+                          child: FloatingActionButton(
+                            mini: true,
+                            onPressed: () {},
+                            backgroundColor: Colors.green,
+                            child: const Icon(
+                              Icons.add,
+                              size: 30,
+                            ),
                           ),
-                        ),
-                        //const FloatingActionButtonLocation(),
-                      ])
-                    ]),
-                  ),
 
-                  const Spacer(
-                    flex: 50,
-                  ),
+                          //const FloatingActionButtonLocation(),
+                        ))
+                  ]),
 
-                  // const Divider(),
+                  // const Spacer(
+                  //   flex: 50,
+                  // ),
+
+                  // Container(
+                  //   child: const Text('Viewed updates'),
+                  // ) // const Divider(),
                 ],
               ),
             );
