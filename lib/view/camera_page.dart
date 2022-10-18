@@ -1,4 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
+import 'package:mywhatsapp/main.dart';
+
+import 'home_screen.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -8,6 +14,18 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPageState extends State<CameraPage> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 2), navigateToCamera());
+
+    super.initState();
+  }
+
+  navigateToCamera() {
+    return Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const CameraApp()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,27 +38,72 @@ class _CameraPageState extends State<CameraPage> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        body: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            verticalDirection: VerticalDirection.up,
-            children: <Widget>[
-              Container(
-                  margin: const EdgeInsets.only(right: 10, top: 5),
-                  height: 20.0,
-                  width: 20.0,
-                  child: FittedBox(
-                    child: FloatingActionButton(
-                      mini: true,
-                      onPressed: () {},
-                      backgroundColor: Colors.white,
-                      child: const Icon(
-                        Icons.flash_on,
-                        size: 30,
-                      ),
-                    ),
+        body: Container(
+          color: Colors.black,
+          child: Center(
+              child: Container(
+            height: 340.0,
+            width: 300.0,
+            color: Colors.grey,
+          )),
+        ));
+  }
+}
 
-                    //const FloatingActionButtonLocation(),
-                  )),
-            ]));
+/// CameraApp is the Main Application.
+class CameraApp extends StatefulWidget {
+  /// Default Constructor
+  const CameraApp({Key? key}) : super(key: key);
+
+  @override
+  State<CameraApp> createState() => _CameraAppState();
+}
+
+class _CameraAppState extends State<CameraApp> {
+  late CameraController controller;
+  pop() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Homescreen(),
+        ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller = CameraController(cameras[0], ResolutionPreset.max);
+    controller.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    }).catchError((Object e) {
+      if (e is CameraException) {
+        switch (e.code) {
+          case 'CameraAccessDenied':
+            print('User denied camera access.');
+            break;
+          default:
+            print('Handle other errors.');
+            break;
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!controller.value.isInitialized) {
+      return WillPopScope(onWillPop: () async => pop(), child: Container());
+    }
+    return WillPopScope(
+        onWillPop: () async => pop(), child: CameraPreview(controller));
   }
 }
