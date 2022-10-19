@@ -52,22 +52,24 @@ class _SelectContactPageState extends State<SelectContactPage> {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return SizedBox(
-            height: 70,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 10,
-                  child: Image.network(
-                      'https://avatars.githubusercontent.com/u/92828194?v=4'),
+              height: 70,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: const [
+                    CircleAvatar(
+                      radius: 28,
+                      backgroundImage: NetworkImage(
+                          'https://avatars.githubusercontent.com/u/92828194?v=4'),
+                    ),
+                    Spacer(
+                      flex: 3,
+                    ),
+                    Expanded(flex: 40, child: Text('Ayaz')),
+                    // const Divider(),
+                  ],
                 ),
-                const Spacer(
-                  flex: 3,
-                ),
-                const Expanded(flex: 40, child: Text('Ayaz')),
-                // const Divider(),
-              ],
-            ),
-          );
+              ));
         },
         itemCount: 15,
       ),

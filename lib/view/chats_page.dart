@@ -17,22 +17,25 @@ class _ChatsPageState extends State<ChatsPage> {
         body: ListView.builder(
           itemBuilder: (context, index) {
             return SizedBox(
-              height: 70,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 10,
-                    child: Image.network(
-                        'https://avatars.githubusercontent.com/u/92828194?v=4'),
+                height: 70,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: const [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: NetworkImage(
+                            'https://thetourguy.com/wp-content/uploads/2020/03/Where-to-Stay-NYC-Hotel-Eiffel-Tower-1440-x-675-900x420.jpeg'),
+                      ),
+
+                      Spacer(
+                        flex: 30,
+                      ),
+                      Expanded(flex: 40, child: Text('Hello')),
+                      // const Divider(),
+                    ],
                   ),
-                  const Spacer(
-                    flex: 30,
-                  ),
-                  const Expanded(flex: 40, child: Text('Hello')),
-                  // const Divider(),
-                ],
-              ),
-            );
+                ));
           },
           itemCount: 15,
         ),
