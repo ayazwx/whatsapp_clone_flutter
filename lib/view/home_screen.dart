@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mywhatsapp/view/calls_page.dart';
 import 'package:mywhatsapp/view/chats_page.dart';
 import 'package:mywhatsapp/view/status_page.dart';
+import 'package:mywhatsapp/widgets/setting_page.dart';
 
 import 'camera_page.dart';
 
@@ -28,6 +29,7 @@ class _HomescreenState extends State<Homescreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("WhatsApp"),
         actions: [
           IconButton(
@@ -38,6 +40,14 @@ class _HomescreenState extends State<Homescreen>
           PopupMenuButton<String>(
             iconSize: 18,
             onSelected: (value) {
+              if (value == '4') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const SettingPage(),
+                  ),
+                );
+              }
               print(value);
             },
             itemBuilder: (BuildContext context) {
@@ -59,7 +69,7 @@ class _HomescreenState extends State<Homescreen>
                   child: Text("Starred messages"),
                 ),
                 const PopupMenuItem(
-                  value: "Settings",
+                  value: '4',
                   child: Text("Settings"),
                 ),
               ];
