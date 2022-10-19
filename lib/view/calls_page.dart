@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../widgets/select_contact_call.dart';
 import 'home_screen.dart';
 
 class CallsPage extends StatefulWidget {
@@ -14,7 +14,7 @@ class _CallsPageState extends State<CallsPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Homescreen(),
+          builder: (context) => const Homescreen(),
         ));
   }
   // late List<String> Calls;
@@ -52,7 +52,13 @@ class _CallsPageState extends State<CallsPage> {
                 width: 50.0,
                 child: FittedBox(
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) =>
+                                  const SelectContactCallPage()));
+                    },
                     backgroundColor: Colors.green,
                     child: const Icon(
                       Icons.call,
